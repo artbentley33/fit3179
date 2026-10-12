@@ -9,8 +9,8 @@
     "anchor": "start",
     "offset": 10
   },
-  "width": "container",
-  "height": 400,
+  "width": 320,
+  "height": 380,
   "data": {
     "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_medals_by_producer.csv"
   },

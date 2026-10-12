@@ -9,8 +9,8 @@
     "anchor": "start",
     "offset": 10
   },
-  "width": "container",
-  "height": 350,
+  "width": 380,
+  "height": 380,
   "data": {
     "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_imports_by_origin_tonnes.csv"
   },
@@ -19,7 +19,7 @@
       "filter": "datum.origin == 'New Zealand' || datum.origin == 'United States' || datum.origin == 'Italy' || datum.origin == 'Netherlands' || datum.origin == 'France' || datum.origin == 'Denmark' || datum.origin == 'United Kingdom' || datum.origin == 'Greece' || datum.origin == 'Germany' || datum.origin == 'Bulgaria'"
     }
   ],
-  "mark": {"type": "bar", "cornerRadiusEnd": 4, "color": "#1a4d6e"},
+  "mark": {"type": "bar", "cornerRadiusEnd": 4, "color": "#7b241c"},
   "encoding": {
     "y": {
       "field": "origin",

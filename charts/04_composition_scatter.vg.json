@@ -9,8 +9,8 @@
     "anchor": "start",
     "offset": 10
   },
-  "width": "container",
-  "height": 350,
+  "width": 450,
+  "height": 380,
   "data": {
     "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_composition.csv"
   },
@@ -52,19 +52,22 @@
         "range": [
           "#8b4513",
           "#a0522d",
-          "#0d7377",
-          "#556b2f",
-          "#1a4d6e",
+          "#2f5233",
+          "#7b6d2f",
+          "#4a7ba7",
           "#c1440e",
-          "#5d3a6b"
+          "#8b5a9e"
         ]
       },
       "legend": {
-        "title": "Cheese Type",
-        "orient": "right",
-        "labelFontSize": 11,
-        "symbolSize": 150
-      }
+    "title": "Cheese Type",
+    "orient": "bottom",
+    "direction": "horizontal",
+    "columns": 3,
+    "labelFontSize": 11,
+    "symbolSize": 100,
+    "offset": 10
+}
     },
     "tooltip": [
       {"field": "cheese", "type": "nominal", "title": "Cheese"},

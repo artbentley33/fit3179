@@ -9,8 +9,8 @@
     "anchor": "start",
     "offset": 10
   },
-  "width": "container",
-  "height": 320,
+  "width": 450,
+  "height": 380,
   "data": {
     "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_production_by_type.csv"
   },

@@ -9,8 +9,8 @@
     "anchor": "start",
     "offset": 10
   },
-  "width": "container",
-  "height": 300,
+  "width": 1050,
+  "height": 380,
   "data": {
     "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/per_capita_consumption.csv"
   },
@@ -18,7 +18,7 @@
     "type": "line",
     "point": {"filled": true, "size": 100},
     "strokeWidth": 3,
-    "color": "#c1440e"
+    "color": "#2c3e50"
   },
   "encoding": {
     "x": {

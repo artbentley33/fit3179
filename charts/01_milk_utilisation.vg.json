@@ -9,8 +9,8 @@
     "anchor": "start",
     "offset": 10
   },
-  "width": "container",
-  "height": 320,
+  "width": 450,
+  "height": 380,
   "data": {
     "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/milk_utilisation.csv"
   },
@@ -33,7 +33,7 @@
           "Whole milk powder",
           "Other"
         ],
-        "range": ["#d4a017", "#0d7377", "#1a4d6e", "#8b4513", "#c4c4c4"]
+        "range": ["#e0a800", "#4a90d9", "#7d3c98", "#a0522d", "#9e9e9e"]
       },
       "legend": {
         "title": null,
