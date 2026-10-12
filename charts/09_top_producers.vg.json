@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Real Dairy Australia Wins the Most Medals",
+    "subtitle": "Top 10 producers at Sydney Royal 2025",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666",
+    "anchor": "start",
+    "offset": 10
+  },
+  "width": 450,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_medals_by_producer.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.exhibitor == 'REAL DAIRY AUSTRALIA' || datum.exhibitor == 'RIVERINA DAIRY' || datum.exhibitor == 'LACTALIS JINDI PTY LTD' || datum.exhibitor == 'THE CHEESE REBELS AUSTRALIA' || datum.exhibitor == 'ASHGROVE CHEESE PTY LTD' || datum.exhibitor == 'FLORIDIA CHEESE PL' || datum.exhibitor == 'BEGA CHEESE' || datum.exhibitor == 'LITTLE CREEK CHEESE' || datum.exhibitor == 'TILBA REAL DAIRY' || datum.exhibitor == 'HIGH VALLEY CHEESE CO'"
+    },
+    {"fold": ["gold", "silver", "bronze"], "as": ["medal", "count"]},
+    {"calculate": "upper(datum.medal)", "as": "medal_label"}
+  ],
+  "mark": {"type": "bar", "cornerRadiusEnd": 4},
+  "encoding": {
+    "y": {
+      "field": "exhibitor",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null,
+      "axis": {"labelFontSize": 11, "labelLimit": 200}
+    },
+    "x": {
+      "field": "count",
+      "type": "quantitative",
+      "title": "Medals",
+      "axis": {"labelFontSize": 11}
+    },
+    "color": {
+      "field": "medal_label",
+      "type": "nominal",
+      "scale": {
+        "domain": ["GOLD", "SILVER", "BRONZE"],
+        "range": ["#d4a017", "#a8a8a8", "#cd7f32"]
+      },
+      "legend": {
+        "title": "Medal Type",
+        "orient": "bottom",
+        "direction": "horizontal",
+        "labelFontSize": 11,
+        "symbolSize": 100
+      }
+    },
+    "order": {"field": "medal_label", "sort": "ascending"},
+    "tooltip": [
+      {"field": "exhibitor", "type": "nominal", "title": "Producer"},
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "medal_label", "type": "nominal", "title": "Medal"},
+      {"field": "count", "type": "quantitative", "title": "Count"}
+    ]
+  },
+  "config": {"view": {"stroke": null}, "font": "Inter, sans-serif"}
+}

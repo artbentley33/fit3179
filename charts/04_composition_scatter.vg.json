@@ -1,0 +1,76 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Cheese Composition: Fat vs Solids",
+    "subtitle": "How different cheeses compare",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666",
+    "anchor": "start",
+    "offset": 10
+  },
+  "width": 400,
+  "height": 350,
+  "data": {
+    "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_composition.csv"
+  },
+  "mark": {
+    "type": "point",
+    "filled": true,
+    "size": 250,
+    "stroke": "white",
+    "strokeWidth": 1.5
+  },
+  "encoding": {
+    "x": {
+      "field": "fat_pct",
+      "type": "quantitative",
+      "title": "Fat (%)",
+      "scale": {"domain": [0, 40]},
+      "axis": {"labelFontSize": 11}
+    },
+    "y": {
+      "field": "snf_pct",
+      "type": "quantitative",
+      "title": "Solids Non-Fat (%)",
+      "scale": {"domain": [0, 50]},
+      "axis": {"labelFontSize": 11}
+    },
+    "color": {
+      "field": "cheese",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Cheddar cheese",
+          "Edam",
+          "Gouda",
+          "Parmesan",
+          "Mozzarella",
+          "Brie",
+          "Cottage cheese"
+        ],
+        "range": [
+          "#8b4513",
+          "#a0522d",
+          "#0d7377",
+          "#556b2f",
+          "#1a4d6e",
+          "#c1440e",
+          "#5d3a6b"
+        ]
+      },
+      "legend": {
+        "title": "Cheese Type",
+        "orient": "right",
+        "labelFontSize": 11,
+        "symbolSize": 150
+      }
+    },
+    "tooltip": [
+      {"field": "cheese", "type": "nominal", "title": "Cheese"},
+      {"field": "fat_pct", "type": "quantitative", "title": "Fat (%)", "format": ".1f"},
+      {"field": "snf_pct", "type": "quantitative", "title": "SNF (%)", "format": ".1f"}
+    ]
+  },
+  "config": {"view": {"stroke": null}, "font": "Inter, sans-serif"}
+}

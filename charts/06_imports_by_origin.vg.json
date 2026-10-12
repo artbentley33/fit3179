@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "New Zealand Leads Cheese Imports",
+    "subtitle": "Top 10 cheese import origins (tonnes)",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666",
+    "anchor": "start",
+    "offset": 10
+  },
+  "width": 450,
+  "height": 350,
+  "data": {
+    "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_imports_by_origin_tonnes.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.origin == 'New Zealand' || datum.origin == 'United States' || datum.origin == 'Italy' || datum.origin == 'Netherlands' || datum.origin == 'France' || datum.origin == 'Denmark' || datum.origin == 'United Kingdom' || datum.origin == 'Greece' || datum.origin == 'Germany' || datum.origin == 'Bulgaria'"
+    }
+  ],
+  "mark": {"type": "bar", "cornerRadiusEnd": 4, "color": "#1a4d6e"},
+  "encoding": {
+    "y": {
+      "field": "origin",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null,
+      "axis": {"labelFontSize": 11}
+    },
+    "x": {
+      "field": "2024_25",
+      "type": "quantitative",
+      "title": "Volume (tonnes)",
+      "axis": {"labelFontSize": 11}
+    },
+    "tooltip": [
+      {"field": "origin", "type": "nominal", "title": "Origin"},
+      {"field": "group", "type": "nominal", "title": "Region"},
+      {"field": "2024_25", "type": "quantitative", "title": "Tonnes", "format": ","}
+    ]
+  },
+  "config": {"view": {"stroke": null}, "font": "Inter, sans-serif"}
+}

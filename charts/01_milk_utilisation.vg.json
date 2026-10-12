@@ -1,0 +1,54 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Cheese Is Australia's Biggest Milk User",
+    "subtitle": "Share of national milk production by end use",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666",
+    "anchor": "start",
+    "offset": 10
+  },
+  "width": 380,
+  "height": 320,
+  "data": {
+    "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/milk_utilisation.csv"
+  },
+  "mark": {
+    "type": "arc",
+    "stroke": "white",
+    "strokeWidth": 3,
+    "cornerRadius": 4
+  },
+  "encoding": {
+    "theta": {"field": "share_pct", "type": "quantitative"},
+    "color": {
+      "field": "use",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Cheese",
+          "Drinking milk",
+          "Skim milk powder/butter",
+          "Whole milk powder",
+          "Other"
+        ],
+        "range": ["#d4a017", "#0d7377", "#1a4d6e", "#8b4513", "#c4c4c4"]
+      },
+      "legend": {
+        "title": null,
+        "orient": "bottom",
+        "direction": "horizontal",
+        "columns": 2,
+        "labelFontSize": 11,
+        "symbolSize": 100,
+        "offset": 10
+      }
+    },
+    "tooltip": [
+      {"field": "use", "type": "nominal", "title": "Category"},
+      {"field": "share_pct", "type": "quantitative", "title": "Share (%)"}
+    ]
+  },
+  "config": {"view": {"stroke": null}, "font": "Inter, sans-serif"}
+}

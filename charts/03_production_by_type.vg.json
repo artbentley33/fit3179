@@ -1,0 +1,65 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Cheddar Dominates Australian Cheese Production",
+    "subtitle": "Annual production by type (tonnes), 2019-20 to 2024-25",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666",
+    "anchor": "start",
+    "offset": 10
+  },
+  "width": 500,
+  "height": 320,
+  "data": {
+    "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_production_by_type.csv"
+  },
+  "transform": [
+    {
+      "fold": ["Cheddar", "Semi_Hard", "Hard_Grating", "Fresh", "Mould"],
+      "as": ["type", "tonnes"]
+    },
+    {"calculate": "replace(datum.type, '_', ' ')", "as": "type_label"}
+  ],
+  "mark": {
+    "type": "line",
+    "point": {"filled": true, "size": 60},
+    "strokeWidth": 2
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {"labelFontSize": 11, "labelAngle": -30}
+    },
+    "y": {
+      "field": "tonnes",
+      "type": "quantitative",
+      "title": "Tonnes",
+      "axis": {"labelFontSize": 11, "format": "~s"}
+    },
+    "color": {
+      "field": "type_label",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Cheddar", "Semi Hard", "Hard Grating", "Fresh", "Mould"],
+        "range": ["#8b4513", "#0d7377", "#1a4d6e", "#556b2f", "#5d3a6b"]
+      },
+      "legend": {
+        "title": "Cheese Type",
+        "orient": "bottom",
+        "direction": "horizontal",
+        "columns": 3,
+        "labelFontSize": 11,
+        "symbolSize": 100
+      }
+    },
+    "tooltip": [
+      {"field": "year", "type": "ordinal", "title": "Year"},
+      {"field": "type_label", "type": "nominal", "title": "Type"},
+      {"field": "tonnes", "type": "quantitative", "title": "Tonnes", "format": ","}
+    ]
+  },
+  "config": {"view": {"stroke": null}, "font": "Inter, sans-serif"}
+}

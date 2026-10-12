@@ -1,0 +1,152 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Japan Is Australia's Biggest Cheese Market",
+    "subtitle": "Top 10 export destinations",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666",
+    "anchor": "start",
+    "offset": 10
+  },
+  "width": 600,
+  "height": 450,
+  "projection": {"type": "mercator", "center": [120, -10], "scale": 200},
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/ne_110m_admin_0_countries.json",
+        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e0e0e0",
+        "stroke": "white",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"destination": "Japan", "lon": 138, "lat": 36, "tonnes": 67848},
+          {"destination": "China & Hong Kong", "lon": 116, "lat": 30, "tonnes": 29108},
+          {"destination": "Malaysia", "lon": 102, "lat": 4, "tonnes": 9504},
+          {"destination": "Philippines", "lon": 122, "lat": 12, "tonnes": 8733},
+          {"destination": "South Korea", "lon": 128, "lat": 36.5, "tonnes": 8464},
+          {"destination": "Thailand", "lon": 101, "lat": 15, "tonnes": 8406},
+          {"destination": "Indonesia", "lon": 113, "lat": -2, "tonnes": 7285},
+          {"destination": "Singapore", "lon": 104, "lat": 1.5, "tonnes": 4809},
+          {"destination": "Taiwan", "lon": 121, "lat": 24, "tonnes": 4629},
+          {"destination": "New Zealand", "lon": 174, "lat": -41, "tonnes": 3674}
+        ]
+      },
+      "transform": [
+        {"calculate": "151.0", "as": "origin_lon"},
+        {"calculate": "-33.5", "as": "origin_lat"}
+      ],
+      "mark": {"type": "rule", "color": "#0d7377", "opacity": 0.7},
+      "encoding": {
+        "longitude": {"field": "origin_lon", "type": "quantitative"},
+        "latitude": {"field": "origin_lat", "type": "quantitative"},
+        "longitude2": {"field": "lon", "type": "quantitative"},
+        "latitude2": {"field": "lat", "type": "quantitative"},
+        "strokeWidth": {
+          "field": "tonnes",
+          "type": "quantitative",
+          "title": "Export Volume (tonnes)",
+          "scale": {"domain": [1000, 70000], "range": [1, 10]},
+          "legend": {
+            "title": "Export Volume (tonnes)",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 300
+          }
+        },
+        "tooltip": [
+          {"field": "destination", "type": "nominal", "title": "Destination"},
+          {"field": "tonnes", "type": "quantitative", "title": "Tonnes", "format": ","}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"destination": "Japan", "lon": 138, "lat": 36, "tonnes": 67848},
+          {"destination": "China & Hong Kong", "lon": 116, "lat": 30, "tonnes": 29108},
+          {"destination": "Malaysia", "lon": 102, "lat": 4, "tonnes": 9504},
+          {"destination": "Philippines", "lon": 122, "lat": 12, "tonnes": 8733},
+          {"destination": "South Korea", "lon": 128, "lat": 36.5, "tonnes": 8464},
+          {"destination": "Thailand", "lon": 101, "lat": 15, "tonnes": 8406},
+          {"destination": "Indonesia", "lon": 113, "lat": -2, "tonnes": 7285},
+          {"destination": "Singapore", "lon": 104, "lat": 1.5, "tonnes": 4809},
+          {"destination": "Taiwan", "lon": 121, "lat": 24, "tonnes": 4629},
+          {"destination": "New Zealand", "lon": 174, "lat": -41, "tonnes": 3674}
+        ]
+      },
+      "mark": {
+        "type": "circle",
+        "color": "#0d7377",
+        "stroke": "white",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "size": {
+          "field": "tonnes",
+          "type": "quantitative",
+          "scale": {"domain": [1000, 70000], "range": [40, 400]},
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "destination", "type": "nominal", "title": "Destination"},
+          {"field": "tonnes", "type": "quantitative", "title": "Tonnes", "format": ","}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"destination": "Japan", "lon": 138, "lat": 36},
+          {"destination": "China & Hong Kong", "lon": 116, "lat": 30},
+          {"destination": "Malaysia", "lon": 102, "lat": 4},
+          {"destination": "Philippines", "lon": 122, "lat": 12},
+          {"destination": "South Korea", "lon": 128, "lat": 36.5},
+          {"destination": "Thailand", "lon": 101, "lat": 15},
+          {"destination": "Indonesia", "lon": 113, "lat": -2},
+          {"destination": "Singapore", "lon": 104, "lat": 1.5},
+          {"destination": "Taiwan", "lon": 121, "lat": 24},
+          {"destination": "New Zealand", "lon": 174, "lat": -41}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 9,
+        "fontWeight": "bold",
+        "color": "#333",
+        "dy": 12
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "destination", "type": "nominal"}
+      }
+    },
+    {
+      "data": {"values": [{"origin": "Australia", "lon": 151, "lat": -33.5}]},
+      "mark": {
+        "type": "circle",
+        "color": "#333",
+        "size": 120,
+        "stroke": "white",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "tooltip": [{"field": "origin", "type": "nominal", "title": "Origin"}]
+      }
+    }
+  ],
+  "config": {"view": {"stroke": null}, "font": "Inter, sans-serif"}
+}

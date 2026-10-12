@@ -1,0 +1,83 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Victoria Dominates Australia's Milk Production",
+    "subtitle": "Milk production by state (million litres)",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666",
+    "anchor": "start",
+    "offset": 10
+  },
+  "width": 500,
+  "height": 450,
+  "projection": {"type": "mercator", "center": [134, -29], "scale": 400},
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/STE_2016_AUST.json",
+        "format": {"type": "topojson", "feature": "STE_2016_AUST"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.STE_NAME16",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/milk_production_by_state_ML.csv"
+            },
+            "key": "state",
+            "fields": ["milk_ml"]
+          }
+        }
+      ],
+      "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1},
+      "encoding": {
+        "color": {
+          "field": "milk_ml",
+          "type": "quantitative",
+          "title": "Milk (ML)",
+          "scale": {"scheme": "oranges", "domain": [0, 5500]},
+          "legend": {"title": "Milk (ML)", "orient": "right"}
+        },
+        "tooltip": [
+          {
+            "field": "properties.STE_NAME16",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "milk_ml",
+            "type": "quantitative",
+            "title": "Milk (ML)",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"state": "WA", "lon": 122, "lat": -25.5},
+          {"state": "NT", "lon": 133.5, "lat": -19.5},
+          {"state": "SA", "lon": 135, "lat": -30},
+          {"state": "QLD", "lon": 144.5, "lat": -22.5},
+          {"state": "NSW", "lon": 146.5, "lat": -32.5},
+          {"state": "VIC", "lon": 144.5, "lat": -37},
+          {"state": "TAS", "lon": 147, "lat": -42}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "color": "#333"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "state", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {"view": {"stroke": null}, "font": "Inter, sans-serif"}
+}

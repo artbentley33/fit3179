@@ -1,0 +1,43 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Asia Dominates Australian Cheese Exports",
+    "subtitle": "Export value by region (A$ million)",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666",
+    "anchor": "start",
+    "offset": 10
+  },
+  "width": 450,
+  "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_exports_value_by_region.csv"
+  },
+  "mark": {"type": "bar", "cornerRadiusEnd": 4, "color": "#0d7377"},
+  "encoding": {
+    "y": {
+      "field": "region",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null,
+      "axis": {"labelFontSize": 11}
+    },
+    "x": {
+      "field": "value_aud_million",
+      "type": "quantitative",
+      "title": "Value (A$ million)",
+      "axis": {"labelFontSize": 11}
+    },
+    "tooltip": [
+      {"field": "region", "type": "nominal", "title": "Region"},
+      {
+        "field": "value_aud_million",
+        "type": "quantitative",
+        "title": "Value (A$m)",
+        "format": ","
+      }
+    ]
+  },
+  "config": {"view": {"stroke": null}, "font": "Inter, sans-serif"}
+}

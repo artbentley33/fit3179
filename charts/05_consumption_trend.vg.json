@@ -1,0 +1,43 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Australians Are Eating Less Cheese",
+    "subtitle": "Per capita consumption, 2020-21 to 2024-25",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666",
+    "anchor": "start",
+    "offset": 10
+  },
+  "width": 450,
+  "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/per_capita_consumption.csv"
+  },
+  "mark": {
+    "type": "line",
+    "point": {"filled": true, "size": 100},
+    "strokeWidth": 3,
+    "color": "#c1440e"
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {"labelFontSize": 11}
+    },
+    "y": {
+      "field": "cheese_kg",
+      "type": "quantitative",
+      "title": "Cheese (kg per person)",
+      "scale": {"domain": [12, 16]},
+      "axis": {"labelFontSize": 11}
+    },
+    "tooltip": [
+      {"field": "year", "type": "ordinal", "title": "Year"},
+      {"field": "cheese_kg", "type": "quantitative", "title": "kg", "format": ".1f"}
+    ]
+  },
+  "config": {"view": {"stroke": null}, "font": "Inter, sans-serif"}
+}
