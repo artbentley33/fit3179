@@ -1,1 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australian Specialty Cheese</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Australian Specialty Cheese</h1>
+            <p class="subtitle">The story of Australia's cheese industry</p>
+        </header>
 
+        <!-- Introduction (two columns) -->
+        <div class="pure-g intro-block">
+            <div class="pure-u-1 pure-u-md-1-2">
+                <p class="intro-text">
+                    Cheese is one of Australia's most<br>
+                    important dairy products. It uses<br>
+                    more milk than anything else and<br>
+                    exports billions each year.
+                </p>
+            </div>
+            <div class="pure-u-1 pure-u-md-1-2">
+                <p class="intro-text">
+                    This dashboard explores how cheese<br>
+                    is made, eaten, traded, and<br>
+                    celebrated across Australia,<br>
+                    from farm to award stage.
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 1 -->
+        <h2 class="section-title">The Raw Material Milk</h2>
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div id="milk_utilisation" class="chart"></div>
+            </div>
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div id="milk_by_state_map" class="chart"></div>
+            </div>
+        </div>
+
+        <!-- Section 2 -->
+        <h2 class="section-title">Cheese Production Types and Characteristics</h2>
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <div id="production_by_type" class="chart-wide"></div>
+            </div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <div id="composition_scatter" class="chart-wide"></div>
+            </div>
+        </div>
+
+        <!-- Section 3 -->
+        <h2 class="section-title">Domestic Consumption</h2>
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <div id="consumption_trend" class="chart-wide"></div>
+            </div>
+        </div>
+
+        <!-- Section 4 -->
+        <h2 class="section-title">Global Trade</h2>
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div id="imports_by_origin" class="chart"></div>
+            </div>
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div id="exports_value_by_region" class="chart"></div>
+            </div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <div id="export_flow_map" class="chart-wide"></div>
+            </div>
+        </div>
+
+        <!-- Section 5 -->
+        <h2 class="section-title">Award-Winning Craft</h2>
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div id="top_producers" class="chart"></div>
+            </div>
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div id="medals_by_state_map" class="chart"></div>
+            </div>
+        </div>
+
+        <!-- Conclusion (two columns) -->
+        <div class="pure-g intro-block">
+            <div class="pure-u-1 pure-u-md-1-2">
+                <p class="intro-text">
+                    Australian cheese combines commodity<br>
+                    scale with award-winning craft.<br>
+                    Victoria dominates production,<br>
+                    while NSW producers win the most medals.
+                </p>
+            </div>
+            <div class="pure-u-1 pure-u-md-1-2">
+                <p class="intro-text">
+                    Exports flow to Asia, led by Japan.<br>
+                    Domestically, cheese remains a staple, <br>
+                    though consumption has softened<br>
+                    in recent years.
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p class="source-label">Data sources</p>
+            <p><a href="https://assets.dairyaustralia.com.au/api/public/content/In-Focus-2025?v=42fe4d04" target="_blank">Dairy Australia</a></p>
+            <p><a href="https://www.rasnsw.com.au/globalassets/document-library/rasnsw/competitions/cheese-dairy/competitions_cheese-and-dairy_2025-show-catalogue.pdf" target="_blank">Royal Agricultural Society of NSW</a></p>
+            <p class="credit">Visualisation by Arthur Bentley Tuerah (34899227)</p>
+        </footer>
+    </div>
+    
+    <script src="vega_lite_vis.js"></script>
+</body>
+</html>
