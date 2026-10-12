@@ -19,7 +19,7 @@ body {
 /* Header */
 header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 h1 {
@@ -37,27 +37,13 @@ h1 {
     margin: 0;
 }
 
-/* Two-column intro / conclusion */
-.intro-block {
-    max-width: 900px;
-    margin: 0 auto 60px auto;
-}
-
-.intro-text {
-    font-size: 1rem;
-    color: #444;
-    line-height: 1.7;
-    padding: 0 20px;
-    margin: 0;
-}
-
 /* Section Headings */
 .section-title {
     font-size: 1.5rem;
     font-weight: 600;
     color: #1a1a1a;
-    margin-top: 60px;
-    margin-bottom: 20px;
+    margin-top: 40px;
+    margin-bottom: 15px;
     padding-left: 12px;
     border-left: 4px solid #d4a017;
 }
@@ -65,26 +51,38 @@ h1 {
 /* Chart Cards */
 .chart {
     background: white;
-    padding: 20px;
-    margin: 10px;
+    padding: 15px;
+    margin: 5px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    min-height: 450px;
+    height: 100%;
+}
+
+.chart-full {
+    background: white;
+    padding: 15px;
+    margin: 5px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     min-height: 400px;
 }
 
-.chart-wide {
-    background: white;
-    padding: 20px;
-    margin: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    min-height: 500px;
+/* Row styling to match heights */
+.chart-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.chart-row > div {
+    display: flex;
 }
 
 /* Footer */
 footer {
     text-align: center;
-    margin-top: 80px;
+    margin-top: 60px;
     padding-top: 30px;
     border-top: 1px solid #e0e0e0;
     color: #888;
@@ -121,11 +119,10 @@ footer a:hover {
     .section-title {
         font-size: 1.2rem;
     }
-    .intro-text {
-        font-size: 0.95rem;
-        padding: 0 10px;
-    }
     .container {
         padding: 20px 10px;
+    }
+    .chart, .chart-full {
+        min-height: 350px;
     }
 }
