@@ -42,8 +42,8 @@ h1 {
     font-size: 1.5rem;
     font-weight: 600;
     color: #1a1a1a;
-    margin-top: 40px;
-    margin-bottom: 15px;
+    margin-top: 50px;
+    margin-bottom: 20px;
     padding-left: 12px;
     border-left: 4px solid #d4a017;
 }
@@ -52,7 +52,7 @@ h1 {
 .chart {
     background: white;
     padding: 15px;
-    margin: 5px;
+    margin: 10px 5px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     min-height: 450px;
@@ -62,7 +62,7 @@ h1 {
 .chart-full {
     background: white;
     padding: 15px;
-    margin: 5px;
+    margin: 10px 5px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     min-height: 400px;
@@ -73,6 +73,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
+    margin-top: 10px;
 }
 
 .chart-row > div {
