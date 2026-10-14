@@ -1,5 +1,45 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0;
+}
+
+/* Narrative — Intro and Conclusion */
 .narrative {
-    max-width: 900px;
+    max-width: 650px;
     margin: 30px auto;
     padding: 0 20px;
     font-size: 1rem;
@@ -10,4 +50,95 @@
 
 .narrative p {
     margin: 0;
+}
+
+/* Section Headings */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    padding-left: 12px;
+    border-left: 4px solid #d4a017;
+}
+
+/* Pure.css grid row — stretch columns to equal height */
+.pure-g {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.pure-g > div {
+    display: flex;
+}
+
+/* Chart Cards */
+.chart, .chart-full {
+    background: white;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.chart {
+    min-height: 450px;
+}
+
+.chart-full {
+    min-height: 400px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid #e0e0e0;
+    color: #888;
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.source-label {
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+footer a {
+    color: #0d7377;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.credit {
+    margin-top: 24px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    .section-title {
+        font-size: 1.2rem;
+    }
+    .container {
+        padding: 20px 10px;
+    }
+    .chart, .chart-full {
+        min-height: 350px;
+    }
 }
