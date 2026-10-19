@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Japan Is Australia's Biggest Cheese Market",
-    "subtitle": "Top 10 export destinations",
+    "subtitle": "Top 10 export destinations (tonnes), 2024-25",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#666",
@@ -27,20 +27,39 @@
     },
     {
       "data": {
-        "values": [
-          {"destination": "Japan", "lon": 138, "lat": 36, "tonnes": 67848},
-          {"destination": "China & Hong Kong", "lon": 116, "lat": 30, "tonnes": 29108},
-          {"destination": "Malaysia", "lon": 102, "lat": 4, "tonnes": 9504},
-          {"destination": "Philippines", "lon": 122, "lat": 12, "tonnes": 8733},
-          {"destination": "South Korea", "lon": 128, "lat": 36.5, "tonnes": 8464},
-          {"destination": "Thailand", "lon": 101, "lat": 15, "tonnes": 8406},
-          {"destination": "Indonesia", "lon": 113, "lat": -2, "tonnes": 7285},
-          {"destination": "Singapore", "lon": 104, "lat": 1.5, "tonnes": 4809},
-          {"destination": "Taiwan", "lon": 121, "lat": 24, "tonnes": 4629},
-          {"destination": "New Zealand", "lon": 174, "lat": -41, "tonnes": 3674}
-        ]
+        "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_exports_by_destination_tonnes.csv",
+        "format": {
+          "type": "csv",
+          "parse": {"2024_25": "number"}
+        }
       },
       "transform": [
+        {
+          "window": [{"op": "rank", "as": "rank"}],
+          "sort": [{"field": "2024_25", "order": "descending"}]
+        },
+        {"filter": "datum.rank <= 10"},
+        {
+          "lookup": "destination",
+          "from": {
+            "data": {
+              "values": [
+                {"destination": "Japan", "lon": 138, "lat": 36},
+                {"destination": "China & Hong Kong", "lon": 116, "lat": 30},
+                {"destination": "Malaysia", "lon": 102, "lat": 4},
+                {"destination": "Philippines", "lon": 122, "lat": 12},
+                {"destination": "South Korea", "lon": 128, "lat": 36.5},
+                {"destination": "Thailand", "lon": 101, "lat": 15},
+                {"destination": "Indonesia", "lon": 113, "lat": -2},
+                {"destination": "Singapore", "lon": 104, "lat": 1.5},
+                {"destination": "Taiwan", "lon": 121, "lat": 24},
+                {"destination": "New Zealand", "lon": 174, "lat": -41}
+              ]
+            },
+            "key": "destination",
+            "fields": ["lon", "lat"]
+          }
+        },
         {"calculate": "151.0", "as": "origin_lon"},
         {"calculate": "-33.5", "as": "origin_lat"}
       ],
@@ -51,7 +70,7 @@
         "longitude2": {"field": "lon", "type": "quantitative"},
         "latitude2": {"field": "lat", "type": "quantitative"},
         "strokeWidth": {
-          "field": "tonnes",
+          "field": "2024_25",
           "type": "quantitative",
           "title": "Export Volume (tonnes)",
           "scale": {"domain": [1000, 70000], "range": [1, 10]},
@@ -64,25 +83,46 @@
         },
         "tooltip": [
           {"field": "destination", "type": "nominal", "title": "Destination"},
-          {"field": "tonnes", "type": "quantitative", "title": "Tonnes", "format": ","}
+          {"field": "2024_25", "type": "quantitative", "title": "Tonnes", "format": ","}
         ]
       }
     },
     {
       "data": {
-        "values": [
-          {"destination": "Japan", "lon": 138, "lat": 36, "tonnes": 67848},
-          {"destination": "China & Hong Kong", "lon": 116, "lat": 30, "tonnes": 29108},
-          {"destination": "Malaysia", "lon": 102, "lat": 4, "tonnes": 9504},
-          {"destination": "Philippines", "lon": 122, "lat": 12, "tonnes": 8733},
-          {"destination": "South Korea", "lon": 128, "lat": 36.5, "tonnes": 8464},
-          {"destination": "Thailand", "lon": 101, "lat": 15, "tonnes": 8406},
-          {"destination": "Indonesia", "lon": 113, "lat": -2, "tonnes": 7285},
-          {"destination": "Singapore", "lon": 104, "lat": 1.5, "tonnes": 4809},
-          {"destination": "Taiwan", "lon": 121, "lat": 24, "tonnes": 4629},
-          {"destination": "New Zealand", "lon": 174, "lat": -41, "tonnes": 3674}
-        ]
+        "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_exports_by_destination_tonnes.csv",
+        "format": {
+          "type": "csv",
+          "parse": {"2024_25": "number"}
+        }
       },
+      "transform": [
+        {
+          "window": [{"op": "rank", "as": "rank"}],
+          "sort": [{"field": "2024_25", "order": "descending"}]
+        },
+        {"filter": "datum.rank <= 10"},
+        {
+          "lookup": "destination",
+          "from": {
+            "data": {
+              "values": [
+                {"destination": "Japan", "lon": 138, "lat": 36},
+                {"destination": "China & Hong Kong", "lon": 116, "lat": 30},
+                {"destination": "Malaysia", "lon": 102, "lat": 4},
+                {"destination": "Philippines", "lon": 122, "lat": 12},
+                {"destination": "South Korea", "lon": 128, "lat": 36.5},
+                {"destination": "Thailand", "lon": 101, "lat": 15},
+                {"destination": "Indonesia", "lon": 113, "lat": -2},
+                {"destination": "Singapore", "lon": 104, "lat": 1.5},
+                {"destination": "Taiwan", "lon": 121, "lat": 24},
+                {"destination": "New Zealand", "lon": 174, "lat": -41}
+              ]
+            },
+            "key": "destination",
+            "fields": ["lon", "lat"]
+          }
+        }
+      ],
       "mark": {
         "type": "circle",
         "color": "#0d7377",
@@ -93,42 +133,41 @@
         "longitude": {"field": "lon", "type": "quantitative"},
         "latitude": {"field": "lat", "type": "quantitative"},
         "size": {
-          "field": "tonnes",
+          "field": "2024_25",
           "type": "quantitative",
           "scale": {"domain": [1000, 70000], "range": [40, 400]},
           "legend": null
         },
         "tooltip": [
           {"field": "destination", "type": "nominal", "title": "Destination"},
-          {"field": "tonnes", "type": "quantitative", "title": "Tonnes", "format": ","}
+          {"field": "2024_25", "type": "quantitative", "title": "Tonnes", "format": ","}
         ]
       }
     },
     {
       "data": {
         "values": [
-          {"destination": "Japan", "lon": 138, "lat": 36},
-          {"destination": "China & Hong Kong", "lon": 116, "lat": 30},
-          {"destination": "Malaysia", "lon": 102, "lat": 4},
-          {"destination": "Philippines", "lon": 122, "lat": 12},
-          {"destination": "South Korea", "lon": 128, "lat": 36.5},
-          {"destination": "Thailand", "lon": 101, "lat": 15},
-          {"destination": "Indonesia", "lon": 113, "lat": -2},
-          {"destination": "Singapore", "lon": 104, "lat": 1.5},
-          {"destination": "Taiwan", "lon": 121, "lat": 24},
-          {"destination": "New Zealand", "lon": 174, "lat": -41}
+          {"destination": "Japan", "text_lon": 145, "text_lat": 35},
+          {"destination": "China & Hong Kong", "text_lon": 108, "text_lat": 33.5},
+          {"destination": "Malaysia", "text_lon": 95, "text_lat": 7},
+          {"destination": "Philippines", "text_lon": 116, "text_lat": 15},
+          {"destination": "South Korea", "text_lon": 128, "text_lat": 38.5},
+          {"destination": "Thailand", "text_lon": 96, "text_lat": 12},
+          {"destination": "Indonesia", "text_lon": 120.5, "text_lat": 0},
+          {"destination": "Singapore", "text_lon": 100, "text_lat": -1.5},
+          {"destination": "Taiwan", "text_lon": 126.5, "text_lat": 24.5},
+          {"destination": "New Zealand", "text_lon": 174, "text_lat": -43}
         ]
       },
       "mark": {
         "type": "text",
         "fontSize": 9,
         "fontWeight": "bold",
-        "color": "#333",
-        "dy": 12
+        "color": "#333"
       },
       "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude": {"field": "lat", "type": "quantitative"},
+        "longitude": {"field": "text_lon", "type": "quantitative"},
+        "latitude": {"field": "text_lat", "type": "quantitative"},
         "text": {"field": "destination", "type": "nominal"}
       }
     },
