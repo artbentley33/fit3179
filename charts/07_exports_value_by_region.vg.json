@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Asia Dominates Australian Cheese Exports",
-    "subtitle": "Export value by region (A$ million)",
+    "subtitle": "Export value by region (A$ million), 2024-25",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#666",
@@ -12,32 +12,58 @@
   "width": 380,
   "height": 380,
   "data": {
-    "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_exports_value_by_region.csv"
+    "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_exports_value_by_region.csv",
+    "format": {
+      "type": "csv",
+      "parse": {"value_aud_million": "number"}
+    }
   },
-  "mark": {"type": "bar", "cornerRadiusEnd": 4, "color": "#1e5f4c"},
-  "encoding": {
-    "y": {
-      "field": "region",
-      "type": "nominal",
-      "sort": "-x",
-      "title": null,
-      "axis": {"labelFontSize": 11}
-    },
-    "x": {
-      "field": "value_aud_million",
-      "type": "quantitative",
-      "title": "Value (A$ million)",
-      "axis": {"labelFontSize": 11}
-    },
-    "tooltip": [
-      {"field": "region", "type": "nominal", "title": "Region"},
-      {
-        "field": "value_aud_million",
-        "type": "quantitative",
-        "title": "Value (A$m)",
-        "format": ","
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#1a4d6e",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "y": {
+          "field": "region",
+          "type": "nominal",
+          "sort": "-x",
+          "title": null,
+          "axis": {"labelFontSize": 11}
+        },
+        "x": {
+          "field": "value_aud_million",
+          "type": "quantitative",
+          "title": "Value (A$ million)",
+          "axis": {"labelFontSize": 11}
+        },
+        "x2": {"datum": 0}
       }
-    ]
-  },
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "color": "#1a4d6e",
+        "size": 100
+      },
+      "encoding": {
+        "y": {
+          "field": "region",
+          "type": "nominal",
+          "sort": "-x"
+        },
+        "x": {
+          "field": "value_aud_million",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {"field": "region", "type": "nominal", "title": "Region"},
+          {"field": "value_aud_million", "type": "quantitative", "title": "Value (A$m)", "format": ","}
+        ]
+      }
+    }
+  ],
   "config": {"view": {"stroke": null}, "font": "Inter, sans-serif"}
 }
