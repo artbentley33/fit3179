@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Cheese Composition: Fat vs Solids",
+    "text": "Cheese Composition: Fat vs. Solids",
     "subtitle": "How different cheeses compare",
     "fontSize": 16,
     "subtitleFontSize": 12,
@@ -9,15 +9,15 @@
     "anchor": "start",
     "offset": 10
   },
-  "width": 450,
-  "height": 380,
+  "width": 380,
+  "height": 300,
   "data": {
     "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_composition.csv"
   },
   "mark": {
     "type": "point",
     "filled": true,
-    "size": 250,
+    "size": 200,
     "stroke": "white",
     "strokeWidth": 1.5
   },
@@ -50,24 +50,24 @@
           "Cottage cheese"
         ],
         "range": [
-          "#8b4513",
-          "#a0522d",
-          "#2f5233",
-          "#7b6d2f",
-          "#4a7ba7",
-          "#c1440e",
-          "#8b5a9e"
+          "#5d4037",
+          "#56b4e9",
+          "#7e57c2",
+          "#d97706",
+          "#f0e442",
+          "#009e73",
+          "#cc79a7"
         ]
       },
       "legend": {
-    "title": "Cheese Type",
-    "orient": "bottom",
-    "direction": "horizontal",
-    "columns": 3,
-    "labelFontSize": 11,
-    "symbolSize": 100,
-    "offset": 10
-}
+        "title": "Cheese Type",
+        "orient": "bottom",
+        "direction": "horizontal",
+        "columns": 3,
+        "labelFontSize": 10,
+        "symbolSize": 80,
+        "offset": 10
+      }
     },
     "tooltip": [
       {"field": "cheese", "type": "nominal", "title": "Cheese"},
