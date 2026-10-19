@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Victoria Dominates Australia's Milk Production",
-    "subtitle": "Milk production by state, 2024-25 (million litres)",
+    "subtitle": "Milk production by state (million litres), 2024-25",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#666",
