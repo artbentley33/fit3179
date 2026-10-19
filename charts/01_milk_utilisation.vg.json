@@ -1,27 +1,89 @@
+
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Cheese Is Australia's Biggest Milk User",
-    "subtitle": "Share of national milk production by end use",
+    "subtitle": "Share of Australian milk utilisation, 2024-2025",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#666",
     "anchor": "start",
     "offset": 10
   },
-  "width": 450,
+  "width": 400,
   "height": 380,
   "data": {
-    "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/milk_utilisation.csv"
+    "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/milk_utilisation.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "share_pct": "number"
+      }
+    }
   },
+  "transform": [
+    {
+      "window": [
+        {
+          "op": "sum",
+          "field": "share_pct",
+          "as": "cumsum"
+        }
+      ],
+      "sort": [
+        {
+          "field": "share_pct",
+          "order": "descending"
+        }
+      ]
+    },
+    {
+      "calculate": "datum.cumsum - datum.share_pct",
+      "as": "start_pct"
+    },
+    {
+      "calculate": "sequence(1, 101)",
+      "as": "grid"
+    },
+    {
+      "flatten": ["grid"]
+    },
+    {
+      "filter": "datum.grid > datum.start_pct && datum.grid <= datum.cumsum"
+    },
+    {
+      "calculate": "(datum.grid - 1) % 10",
+      "as": "col"
+    },
+    {
+      "calculate": "floor((datum.grid - 1) / 10)",
+      "as": "row"
+    }
+  ],
   "mark": {
-    "type": "arc",
+    "type": "rect",
     "stroke": "white",
-    "strokeWidth": 3,
-    "cornerRadius": 4
+    "strokeWidth": 1.5,
+    "cornerRadius": 3
   },
   "encoding": {
-    "theta": {"field": "share_pct", "type": "quantitative"},
+    "x": {
+      "field": "col",
+      "type": "ordinal",
+      "axis": null,
+      "scale": {
+        "paddingInner": 0.05
+      }
+    },
+    "y": {
+      "field": "row",
+      "type": "ordinal",
+      "axis": null,
+      "sort": "ascending",
+      "scale": {
+        "paddingInner": 0.05
+      }
+    },
     "color": {
       "field": "use",
       "type": "nominal",
@@ -30,25 +92,43 @@
           "Cheese",
           "Drinking milk",
           "Skim milk powder/butter",
-          "Whole milk powder",
-          "Other"
+          "Other",
+          "Whole milk powder"
         ],
-        "range": ["#e0a800", "#4a90d9", "#7d3c98", "#a0522d", "#9e9e9e"]
+        "range": [
+          "#e0a800",
+          "#4a90d9",
+          "#7d3c98",
+          "#9e9e9e",
+          "#a0522d"
+        ]
       },
       "legend": {
-        "title": null,
+        "title": "Milk Use",
         "orient": "bottom",
         "direction": "horizontal",
         "columns": 2,
         "labelFontSize": 11,
-        "symbolSize": 100,
-        "offset": 10
+        "symbolSize": 100
       }
     },
     "tooltip": [
-      {"field": "use", "type": "nominal", "title": "Category"},
-      {"field": "share_pct", "type": "quantitative", "title": "Share (%)"}
+      {
+        "field": "use",
+        "type": "nominal",
+        "title": "Category"
+      },
+      {
+        "field": "share_pct",
+        "type": "quantitative",
+        "title": "Share (%)"
+      }
     ]
   },
-  "config": {"view": {"stroke": null}, "font": "Inter, sans-serif"}
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Inter, sans-serif"
+  }
 }
