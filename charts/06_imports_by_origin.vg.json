@@ -1,83 +1,228 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
   "title": {
     "text": "New Zealand Leads Cheese Imports",
-    "subtitle": "Top 10 cheese import origins (tonnes), 2024-2025",
+    "subtitle": "Australian cheese imports by origin (tonnes), 2024-25",
+    "anchor": "start",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#666",
-    "anchor": "start",
     "offset": 10
   },
-  "width": 380,
-  "height": 380,
-  "data": {
-    "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_imports_by_origin_tonnes.csv",
-    "format": {
-      "type": "csv",
-      "parse": {
-        "2024_25": "number"
-      }
-    }
-  },
-  "transform": [
+  "width": 600,
+  "height": 460,
+  "data": [
     {
-      "filter": "datum.origin != 'Other EU' && datum.origin != 'Other'"
+      "name": "raw",
+      "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_imports_by_origin_tonnes.csv",
+      "format": {"type": "csv"},
+      "transform": [
+        {
+          "type": "formula",
+          "as": "value",
+          "expr": "toNumber(datum['2024_25'])"
+        },
+        {
+          "type": "filter",
+          "expr": "datum.group !== 'Other' && datum.origin !== 'Other'"
+        }
+      ]
     },
     {
-      "window": [{"op": "rank", "as": "rank"}],
-      "sort": [{"field": "2024_25", "order": "descending"}]
+      "name": "rootNode",
+      "values": [
+        {
+          "id": "Australia",
+          "parent": null,
+          "name": "Australia",
+          "group": "Australia",
+          "size": 0
+        }
+      ]
     },
     {
-      "filter": "datum.rank <= 10"
+      "name": "regionNodes",
+      "source": "raw",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": ["group"],
+          "ops": ["sum"],
+          "fields": ["value"],
+          "as": ["regionSize"]
+        },
+        {
+          "type": "formula",
+          "as": "id",
+          "expr": "datum.group"
+        },
+        {
+          "type": "formula",
+          "as": "parent",
+          "expr": "'Australia'"
+        },
+        {
+          "type": "formula",
+          "as": "name",
+          "expr": "datum.group"
+        },
+        {
+          "type": "formula",
+          "as": "size",
+          "expr": "datum.regionSize"
+        }
+      ]
+    },
+    {
+      "name": "countryNodes",
+      "source": "raw",
+      "transform": [
+        {
+          "type": "formula",
+          "as": "id",
+          "expr": "datum.origin"
+        },
+        {
+          "type": "formula",
+          "as": "parent",
+          "expr": "datum.group"
+        },
+        {
+          "type": "formula",
+          "as": "name",
+          "expr": "datum.origin"
+        },
+        {
+          "type": "formula",
+          "as": "size",
+          "expr": "datum.value"
+        }
+      ]
+    },
+    {
+      "name": "hierarchy",
+      "source": ["rootNode", "regionNodes", "countryNodes"],
+      "transform": [
+        {
+          "type": "stratify",
+          "key": "id",
+          "parentKey": "parent"
+        },
+        {
+          "type": "treemap",
+          "field": "size",
+          "method": "binary",
+          "round": true,
+          "paddingInner": 1,
+          "paddingOuter": 0,
+          "paddingTop": 0,
+          "size": [
+            {"signal": "width"},
+            {"signal": "height"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "countries",
+      "source": "hierarchy",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.depth === 2"
+        }
+      ]
     }
   ],
-  "layer": [
+  "scales": [
     {
-      "mark": {
-        "type": "rule",
-        "color": "#a93226",
-        "strokeWidth": 2
-      },
-      "encoding": {
-        "y": {
-          "field": "origin",
-          "type": "nominal",
-          "sort": {"field": "2024_25", "order": "descending"},
-          "title": null,
-          "axis": {"labelFontSize": 11}
+      "name": "regionColor",
+      "type": "ordinal",
+      "domain": ["Oceania", "North America", "Europe"],
+      "range": ["#1a4d6e", "#56b4e9", "#cc79a7"]
+    }
+  ],
+  "legends": [
+    {
+      "fill": "regionColor",
+      "title": "Region",
+      "orient": "bottom",
+      "direction": "horizontal",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "symbolType": "square",
+      "symbolSize": 100,
+      "offset": 10
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": {"data": "countries"},
+      "encode": {
+        "enter": {
+          "x": {"field": "x0"},
+          "y": {"field": "y0"},
+          "x2": {"field": "x1"},
+          "y2": {"field": "y1"},
+          "stroke": {"value": "white"},
+          "strokeWidth": {"value": 0.5}
         },
-        "x": {
-          "field": "2024_25",
-          "type": "quantitative",
-          "title": "Volume (tonnes)",
-          "axis": {"labelFontSize": 11}
-        },
-        "x2": {"datum": 0}
+        "update": {
+          "fill": {
+            "scale": "regionColor",
+            "field": "group"
+          },
+          "tooltip": {
+            "signal": "{'Country': datum.name, 'Region': datum.parent, 'Volume (tonnes)': format(datum.size, ',')}"
+          }
+        }
       }
     },
     {
-      "mark": {
-        "type": "circle",
-        "color": "#a93226",
-        "size": 100
-      },
-      "encoding": {
-        "y": {
-          "field": "origin",
-          "type": "nominal",
-          "sort": {"field": "2024_25", "order": "descending"}
+      "type": "text",
+      "from": {"data": "countries"},
+      "encode": {
+        "enter": {
+          "x": {"signal": "(datum.x0 + datum.x1) / 2"},
+          "y": {"signal": "(datum.y0 + datum.y1) / 2 - 6"},
+          "text": {"field": "name"},
+          "align": {"value": "center"},
+          "baseline": {"value": "middle"},
+          "fontSize": {"value": 10},
+          "fontWeight": {"value": "bold"},
+          "fill": {"value": "white"}
         },
-        "x": {
-          "field": "2024_25",
-          "type": "quantitative"
+        "update": {
+          "opacity": {
+            "signal": "datum.x1 - datum.x0 > 55 && datum.y1 - datum.y0 > 28 ? 1 : 0"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "countries"},
+      "encode": {
+        "enter": {
+          "x": {"signal": "(datum.x0 + datum.x1) / 2"},
+          "y": {"signal": "(datum.y0 + datum.y1) / 2 + 8"},
+          "text": {"signal": "format(datum.size, ',')"},
+          "align": {"value": "center"},
+          "baseline": {"value": "middle"},
+          "fontSize": {"value": 10},
+          "fill": {"value": "white"}
         },
-        "tooltip": [
-          {"field": "origin", "type": "nominal", "title": "Origin"},
-          {"field": "2024_25", "type": "quantitative", "title": "Tonnes", "format": ","}
-        ]
+        "update": {
+          "opacity": {
+            "signal": "datum.x1 - datum.x0 > 55 && datum.y1 - datum.y0 > 28 ? 1 : 0"
+          }
+        }
       }
     }
   ],
-  "config": {"view": {"stroke": null}, "font": "Inter, sans-serif"}
+  "config": {
+    "view": {"stroke": null},
+    "font": "Inter, sans-serif"
+  }
 }
