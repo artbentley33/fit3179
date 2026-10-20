@@ -16,10 +16,19 @@
   },
   "transform": [
     {
-      "fold": ["Cheddar", "Semi_Hard", "Hard_Grating", "Fresh", "Mould"],
+      "fold": [
+        "Cheddar",
+        "Semi_Hard",
+        "Hard_Grating",
+        "Fresh",
+        "Mould"
+      ],
       "as": ["type", "tonnes"]
     },
-    {"calculate": "replace(datum.type, '_', ' ')", "as": "type_label"}
+    {
+      "calculate": "replace(datum.type, '_', ' ')",
+      "as": "type_label"
+    }
   ],
   "mark": {
     "type": "rect",
@@ -32,13 +41,18 @@
       "field": "year",
       "type": "ordinal",
       "title": null,
-      "axis": {"labelAngle": -30, "labelFontSize": 10}
+      "axis": {
+        "labelAngle": -30,
+        "labelFontSize": 10
+      }
     },
     "y": {
       "field": "type_label",
       "type": "nominal",
       "title": null,
-      "axis": {"labelFontSize": 11}
+      "axis": {
+        "labelFontSize": 11
+      }
     },
     "color": {
       "field": "tonnes",
@@ -48,13 +62,35 @@
         "scheme": "greens",
         "domain": [0, 210000]
       },
-      "legend": {"title": "Tonnes", "orient": "right"}
+      "legend": {
+        "title": "Tonnes",
+        "orient": "bottom",
+        "direction": "horizontal"
+      }
     },
     "tooltip": [
-      {"field": "year", "type": "ordinal", "title": "Year"},
-      {"field": "type_label", "type": "nominal", "title": "Type"},
-      {"field": "tonnes", "type": "quantitative", "title": "Tonnes", "format": ","}
+      {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "type_label",
+        "type": "nominal",
+        "title": "Type"
+      },
+      {
+        "field": "tonnes",
+        "type": "quantitative",
+        "title": "Tonnes",
+        "format": ","
+      }
     ]
   },
-  "config": {"view": {"stroke": null}, "font": "Inter, sans-serif"}
-} 
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Inter, sans-serif"
+  }
+}
