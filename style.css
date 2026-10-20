@@ -16,7 +16,6 @@ body {
     padding: 40px 20px;
 }
 
-/* Header */
 header {
     text-align: center;
     margin-bottom: 30px;
@@ -37,10 +36,9 @@ h1 {
     margin: 0;
 }
 
-/* Narrative — Intro and Conclusion */
 .narrative {
     max-width: 650px;
-    margin: 30px 0;
+    margin: 30px auto;
     padding: 0;
     font-size: 1rem;
     line-height: 1.7;
@@ -48,7 +46,6 @@ h1 {
     text-align: left;
 }
 
-/* Section Headings */
 .section-title {
     font-size: 1.5rem;
     font-weight: 600;
@@ -59,7 +56,6 @@ h1 {
     border-left: 4px solid #d4a017;
 }
 
-/* Pure.css grid row — stretch columns to equal height */
 .pure-g {
     display: flex;
     flex-wrap: wrap;
@@ -68,19 +64,21 @@ h1 {
 
 .pure-g > div {
     display: flex;
+    min-width: 0;
 }
 
-/* Chart Cards */
-.chart, .chart-full {
+.chart,
+.chart-full {
     background: white;
     padding: 15px;
     margin: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .chart {
@@ -91,7 +89,11 @@ h1 {
     min-height: 400px;
 }
 
-/* Footer */
+.chart > *,
+.chart-full > * {
+    max-width: 100%;
+}
+
 footer {
     text-align: center;
     margin-top: 60px;
@@ -123,18 +125,22 @@ footer a:hover {
     color: #1a1a1a;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     h1 {
         font-size: 2.2rem;
     }
+
     .section-title {
         font-size: 1.2rem;
     }
+
     .container {
         padding: 20px 10px;
     }
-    .chart, .chart-full {
+
+    .chart,
+    .chart-full {
         min-height: 350px;
+        margin: 8px 0;
     }
 }
