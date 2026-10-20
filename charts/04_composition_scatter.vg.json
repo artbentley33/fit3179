@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Cheese Composition: Fat vs. Solids",
-    "subtitle": "How different cheeses compare",
+    "text": "Cottage Cheese Has the Lowest Fat and SNF Content",
+    "subtitle": "Cheese Composition: Fat vs Solids Non-Fat (%)",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#666",
@@ -26,15 +26,23 @@
       "field": "fat_pct",
       "type": "quantitative",
       "title": "Fat (%)",
-      "scale": {"domain": [0, 40]},
-      "axis": {"labelFontSize": 11}
+      "scale": {
+        "domain": [0, 40]
+      },
+      "axis": {
+        "labelFontSize": 11
+      }
     },
     "y": {
       "field": "snf_pct",
       "type": "quantitative",
       "title": "Solids Non-Fat (%)",
-      "scale": {"domain": [0, 50]},
-      "axis": {"labelFontSize": 11}
+      "scale": {
+        "domain": [0, 50]
+      },
+      "axis": {
+        "labelFontSize": 11
+      }
     },
     "color": {
       "field": "cheese",
@@ -70,10 +78,29 @@
       }
     },
     "tooltip": [
-      {"field": "cheese", "type": "nominal", "title": "Cheese"},
-      {"field": "fat_pct", "type": "quantitative", "title": "Fat (%)", "format": ".1f"},
-      {"field": "snf_pct", "type": "quantitative", "title": "SNF (%)", "format": ".1f"}
+      {
+        "field": "cheese",
+        "type": "nominal",
+        "title": "Cheese"
+      },
+      {
+        "field": "fat_pct",
+        "type": "quantitative",
+        "title": "Fat (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "snf_pct",
+        "type": "quantitative",
+        "title": "SNF (%)",
+        "format": ".1f"
+      }
     ]
   },
-  "config": {"view": {"stroke": null}, "font": "Inter, sans-serif"}
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Inter, sans-serif"
+  }
 }
