@@ -11,12 +11,19 @@
   },
   "width": 320,
   "height": 380,
-  "projection": {"type": "mercator", "center": [134, -29], "scale": 400},
+  "projection": {
+    "type": "mercator",
+    "center": [134, -29],
+    "scale": 400
+  },
   "layer": [
     {
       "data": {
         "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/STE_2016_AUST.json",
-        "format": {"type": "topojson", "feature": "STE_2016_AUST"}
+        "format": {
+          "type": "topojson",
+          "feature": "STE_2016_AUST"
+        }
       },
       "mark": {
         "type": "geoshape",
@@ -27,15 +34,33 @@
     },
     {
       "data": {
-        "values": [
-          {"state": "NSW", "lon": 146.5, "lat": -32.5, "medals": 84},
-          {"state": "VIC", "lon": 144.5, "lat": -37, "medals": 55},
-          {"state": "TAS", "lon": 147, "lat": -42, "medals": 12},
-          {"state": "SA", "lon": 135, "lat": -30, "medals": 11},
-          {"state": "WA", "lon": 122, "lat": -25.5, "medals": 4},
-          {"state": "QLD", "lon": 144.5, "lat": -22.5, "medals": 3}
-        ]
+        "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_medals_by_state.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "total_medals": "number"
+          }
+        }
       },
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "values": [
+                {"state": "NSW", "lon": 146.5, "lat": -32.5},
+                {"state": "VIC", "lon": 144.5, "lat": -37},
+                {"state": "TAS", "lon": 146.5, "lat": -42},
+                {"state": "SA", "lon": 135, "lat": -29.5},
+                {"state": "WA", "lon": 122, "lat": -26},
+                {"state": "QLD", "lon": 144, "lat": -23}
+              ]
+            },
+            "key": "state",
+            "fields": ["lon", "lat"]
+          }
+        }
+      ],
       "mark": {
         "type": "circle",
         "opacity": 0.7,
@@ -44,13 +69,22 @@
         "strokeWidth": 1
       },
       "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude": {"field": "lat", "type": "quantitative"},
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
         "size": {
-          "field": "medals",
+          "field": "total_medals",
           "type": "quantitative",
           "title": "Total Medals",
-          "scale": {"domain": [1, 84], "range": [100, 3000]},
+          "scale": {
+            "domain": [1, 85],
+            "range": [100, 3000]
+          },
           "legend": {
             "title": "Total Medals",
             "orient": "right",
@@ -58,8 +92,16 @@
           }
         },
         "tooltip": [
-          {"field": "state", "type": "nominal", "title": "State"},
-          {"field": "medals", "type": "quantitative", "title": "Medals"}
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "total_medals",
+            "type": "quantitative",
+            "title": "Total Medals"
+          }
         ]
       }
     },
@@ -67,12 +109,12 @@
       "data": {
         "values": [
           {"state": "WA", "lon": 122, "lat": -25.5},
-          {"state": "NT", "lon": 133.5, "lat": -19.5},
-          {"state": "SA", "lon": 135, "lat": -30},
-          {"state": "QLD", "lon": 146.5, "lat": -22.5},
-          {"state": "NSW", "lon": 152, "lat": -32.5},
+          {"state": "NT", "lon": 133.5, "lat": -17},
+          {"state": "SA", "lon": 138, "lat": -26.5},
+          {"state": "QLD", "lon": 145, "lat": -22},
+          {"state": "NSW", "lon": 153, "lat": -31},
           {"state": "VIC", "lon": 140, "lat": -36},
-          {"state": "TAS", "lon": 147, "lat": -42}
+          {"state": "TAS", "lon": 148.5, "lat": -41.5}
         ]
       },
       "mark": {
@@ -83,14 +125,26 @@
         "dy": 25
       },
       "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude": {"field": "lat", "type": "quantitative"},
-        "text": {"field": "state", "type": "nominal"}
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "state",
+          "type": "nominal"
+        }
       }
     }
   ],
   "config": {
-    "view": {"stroke": null, "fill": "#fafafa"},
+    "view": {
+      "stroke": null,
+      "fill": "#fafafa"
+    },
     "font": "Inter, sans-serif"
   }
 }
