@@ -16,25 +16,56 @@
   },
   "transform": [
     {
-      "filter": "datum.exhibitor == 'REAL DAIRY AUSTRALIA' || datum.exhibitor == 'RIVERINA DAIRY' || datum.exhibitor == 'LACTALIS JINDI PTY LTD' || datum.exhibitor == 'THE CHEESE REBELS AUSTRALIA' || datum.exhibitor == 'ASHGROVE CHEESE PTY LTD' || datum.exhibitor == 'FLORIDIA CHEESE PL' || datum.exhibitor == 'BEGA CHEESE' || datum.exhibitor == 'LITTLE CREEK CHEESE' || datum.exhibitor == 'TILBA REAL DAIRY' || datum.exhibitor == 'HIGH VALLEY CHEESE CO'"
+      "calculate": "toNumber(datum.gold) + toNumber(datum.silver) + toNumber(datum.bronze)",
+      "as": "total_medals"
     },
-    {"fold": ["gold", "silver", "bronze"], "as": ["medal", "count"]},
-    {"calculate": "upper(datum.medal)", "as": "medal_label"}
+    {
+      "window": [
+        {"op": "rank", "as": "rank"}
+      ],
+      "sort": [
+        {"field": "total_medals", "order": "descending"}
+      ]
+    },
+    {
+      "filter": "datum.rank <= 10"
+    },
+    {
+      "fold": ["gold", "silver", "bronze"],
+      "as": ["medal", "count"]
+    },
+    {
+      "calculate": "upper(datum.medal)",
+      "as": "medal_label"
+    }
   ],
-  "mark": {"type": "bar", "cornerRadiusEnd": 4},
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 4
+  },
   "encoding": {
     "y": {
       "field": "exhibitor",
       "type": "nominal",
-      "sort": "-x",
+      "sort": {
+        "field": "total_medals",
+        "op": "max",
+        "order": "descending"
+      },
       "title": null,
-      "axis": {"labelFontSize": 11, "labelLimit": 200}
+      "axis": {
+        "labelFontSize": 11,
+        "labelLimit": 200
+      }
     },
     "x": {
+      "aggregate": "sum",
       "field": "count",
       "type": "quantitative",
       "title": "Medals",
-      "axis": {"labelFontSize": 11}
+      "axis": {
+        "labelFontSize": 11
+      }
     },
     "color": {
       "field": "medal_label",
@@ -51,13 +82,36 @@
         "symbolSize": 100
       }
     },
-    "order": {"field": "medal_label", "sort": "ascending"},
+    "order": {
+      "field": "medal_label",
+      "sort": "ascending"
+    },
     "tooltip": [
-      {"field": "exhibitor", "type": "nominal", "title": "Producer"},
-      {"field": "state", "type": "nominal", "title": "State"},
-      {"field": "medal_label", "type": "nominal", "title": "Medal"},
-      {"field": "count", "type": "quantitative", "title": "Count"}
+      {
+        "field": "exhibitor",
+        "type": "nominal",
+        "title": "Producer"
+      },
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "medal_label",
+        "type": "nominal",
+        "title": "Medal"
+      },
+      {
+        "aggregate": "sum",
+        "field": "count",
+        "type": "quantitative",
+        "title": "Count"
+      }
     ]
   },
-  "config": {"view": {"stroke": null}, "font": "Inter, sans-serif"}
+  "config": {
+    "view": {"stroke": null},
+    "font": "Inter, sans-serif"
+  }
 }
