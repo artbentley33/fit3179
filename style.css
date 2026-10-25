@@ -90,9 +90,9 @@ h1 {
 
 .section-title {
     font-family: 'Inter', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 700;
-    line-height: 1.4;
+    line-height: 1.45;
     color: var(--text);
     margin-top: 0;
     margin-bottom: 22px;
@@ -144,7 +144,7 @@ h1 {
     max-width: 100%;
 }
 
-/* Data sources and footer */
+/* Data sources */
 
 footer {
     margin-top: 68px;
