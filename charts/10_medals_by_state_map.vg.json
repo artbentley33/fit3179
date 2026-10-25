@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "NSW and Victoria Dominate Cheese Awards",
-    "subtitle": "Medals won at Sydney Royal 2025 by state",
+    "text": "NSW Wins the Most Cheese Awards",
+    "subtitle": "Medals awarded at Sydney Royal 2025 by state",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#666",
