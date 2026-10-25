@@ -9,8 +9,8 @@
     "anchor": "start",
     "offset": 10
   },
-  "width": 380,
-  "height": 380,
+  "width": "container",
+  "height": 500,
   "projection": {
     "type": "mercator",
     "center": [134, -29],
