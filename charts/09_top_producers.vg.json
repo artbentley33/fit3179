@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Real Dairy Australia Wins the Most Medals",
-    "subtitle": "Top 10 producers at Sydney Royal 2025",
+    "text": "Real Dairy Australia Earns the Most Medals",
+    "subtitle": "Top 10 cheese producers by medals at Sydney Royal 2025",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#666",
@@ -72,7 +72,7 @@
       "type": "nominal",
       "scale": {
         "domain": ["GOLD", "SILVER", "BRONZE"],
-        "range": ["#d4a017", "#a8a8a8", "#cd7f32"]
+        "range": ["#E3B341", "#a8a8a8", "#B8734E"]
       },
       "legend": {
         "title": "Medal Type",
