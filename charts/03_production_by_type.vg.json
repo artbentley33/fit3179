@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Cheddar Dominates Australian Cheese Production",
-    "subtitle": "Annual cheese production by type (tonnes), 2019-20 to 2024-25",
+    "subtitle": "Annual production by cheese type (tonnes), 2019-20 to 2024-25",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#666",
