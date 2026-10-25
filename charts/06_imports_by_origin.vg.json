@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "title": {
-    "text": "New Zealand Leads Cheese Imports",
+    "text": "New Zealand Is Australia's Largest Cheese Import Source",
     "subtitle": "Australian cheese imports by origin (tonnes), 2024-25",
     "anchor": "start",
     "fontSize": 16,
@@ -139,7 +139,7 @@
       "name": "regionColor",
       "type": "ordinal",
       "domain": ["Oceania", "North America", "Europe"],
-      "range": ["#1a4d6e", "#56b4e9", "#cc79a7"]
+      "range": ["#264653", "#E9C46A", "#A23B72"]
     }
   ],
   "legends": [
