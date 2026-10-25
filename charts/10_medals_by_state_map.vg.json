@@ -27,7 +27,7 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#d9d9d9",
+        "fill": "#7656A6",
         "stroke": "white",
         "strokeWidth": 1
       }
