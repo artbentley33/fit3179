@@ -139,7 +139,7 @@
       "name": "regionColor",
       "type": "ordinal",
       "domain": ["Oceania", "North America", "Europe"],
-      "range": ["#264653", "#E9C46A", "#A23B72"]
+      "range": ["#1A4D6E", "#6B7D32", "#8F2D56"]
     }
   ],
   "legends": [
