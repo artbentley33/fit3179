@@ -27,7 +27,7 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#7656A6",
+        "fill": "#D9D9D9",
         "stroke": "white",
         "strokeWidth": 1
       }
@@ -64,7 +64,7 @@
       "mark": {
         "type": "circle",
         "opacity": 0.7,
-        "color": "#d4a017",
+        "color": "#7656A6",
         "stroke": "white",
         "strokeWidth": 1
       },
