@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Asia Dominates Australian Cheese Exports",
-    "subtitle": "Export value by region (A$ million), 2024-25",
+    "text": "Asia Accounts for Most Australian Cheese Export Value",
+    "subtitle": "Australian cheese export value by region (A$ million), 2024-25",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#666",
@@ -22,7 +22,7 @@
     {
       "mark": {
         "type": "rule",
-        "color": "#1a4d6e",
+        "color": "#B65C3A",
         "strokeWidth": 2
       },
       "encoding": {
@@ -45,7 +45,7 @@
     {
       "mark": {
         "type": "circle",
-        "color": "#1a4d6e",
+        "color": "#B65C3A",
         "size": 100
       },
       "encoding": {
