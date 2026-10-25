@@ -9,7 +9,7 @@
     "anchor": "start",
     "offset": 10
   },
-  "width": 500,
+  "width": "container",
   "height": 380,
   "data": {
     "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/milk_utilisation.csv",
