@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Japan Is Australia's Biggest Cheese Market",
-    "subtitle": "Top 10 export destinations (tonnes), 2024-25",
+    "text": "Japan Is Australia's Largest Cheese Export Destination",
+    "subtitle": "Top 10 destinations by Australian cheese export volume (tonnes), 2024-25",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#666",
@@ -63,7 +63,7 @@
         {"calculate": "151.0", "as": "origin_lon"},
         {"calculate": "-33.5", "as": "origin_lat"}
       ],
-      "mark": {"type": "rule", "color": "#0d7377", "opacity": 0.7},
+      "mark": {"type": "rule", "color": "#B65C3A", "opacity": 0.7},
       "encoding": {
         "longitude": {"field": "origin_lon", "type": "quantitative"},
         "latitude": {"field": "origin_lat", "type": "quantitative"},
@@ -125,7 +125,7 @@
       ],
       "mark": {
         "type": "circle",
-        "color": "#0d7377",
+        "color": "#B65C3A",
         "stroke": "white",
         "strokeWidth": 1.5
       },
