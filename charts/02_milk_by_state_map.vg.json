@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Victoria Dominates Australia's Milk Production",
-    "subtitle": "Milk production by state (million litres), 2024-25",
+    "text": "SA Lead on Milk Yield per Cow",
+    "subtitle": "Milk production per cow by state (litres), 2024-25",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#666",
@@ -30,10 +30,10 @@
           "lookup": "properties.STE_NAME16",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/milk_production_by_state_ML.csv"
+              "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/milk_per_cow_by_state.csv"
             },
             "key": "state",
-            "fields": ["milk_ml"]
+            "fields": ["milk_litres_per_cow"]
           }
         }
       ],
@@ -44,21 +44,21 @@
       },
       "encoding": {
         "color": {
-          "field": "milk_ml",
+          "field": "milk_litres_per_cow",
           "type": "quantitative",
-          "title": "Milk (ML)",
+          "title": "Litres per cow",
           "scale": {
             "scheme": "oranges",
-            "domain": [0, 5500]
+            "domain": [0, 7400]
           },
           "legend": {
-            "title": "Milk (ML)",
+            "title": "Litres per cow",
             "orient": "right"
           }
         },
         "tooltip": [
           {"field": "properties.STE_NAME16", "type": "nominal", "title": "State"},
-          {"field": "milk_ml", "type": "quantitative", "title": "Milk (ML)", "format": ","}
+          {"field": "milk_litres_per_cow", "type": "quantitative", "title": "Litres per cow", "format": ","}
         ]
       }
     },
