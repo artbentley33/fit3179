@@ -63,7 +63,7 @@
         {"calculate": "151.0", "as": "origin_lon"},
         {"calculate": "-33.5", "as": "origin_lat"}
       ],
-      "mark": {"type": "rule", "color": "#B65C3A", "opacity": 0.7},
+      "mark": {"type": "rule", "color": "#0D7377", "opacity": 0.7},
       "encoding": {
         "longitude": {"field": "origin_lon", "type": "quantitative"},
         "latitude": {"field": "origin_lat", "type": "quantitative"},
@@ -125,7 +125,7 @@
       ],
       "mark": {
         "type": "circle",
-        "color": "#B65C3A",
+        "color": "#0D7377",
         "stroke": "white",
         "strokeWidth": 1.5
       },
