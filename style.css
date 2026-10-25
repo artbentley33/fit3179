@@ -163,12 +163,6 @@ footer {
     font-weight: 700;
 }
 
-.footer-description {
-    max-width: 600px;
-    margin: 0 auto 16px;
-    color: var(--muted);
-}
-
 .footer-sources p {
     margin-top: 8px;
     margin-bottom: 8px;
