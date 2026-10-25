@@ -1,246 +1,190 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Australian Specialty Cheese</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <title>Australian Specialty Cheese</title>
 
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css">
 
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 
 <body>
-  <div class="container">
+    <div class="container">
 
-    <header class="header">
-      <p class="website-title">Australian Specialty Cheese</p>
-      <p class="website-subtitle">A visual exploration of Australia's dairy industry</p>
-    </header>
+        <header>
+            <h1>Australian Specialty Cheese</h1>
+            <p class="subtitle">The story of Australia's cheese industry</p>
+        </header>
 
-    <main>
-      <section class="introduction">
-        <p class="section-label">A DATA STORY</p>
-        <h1>From milk production to award-winning cheese.</h1>
-        <p class="introduction-text">
-          Australia's cheese industry connects dairy production, consumer
-          demand, international trade and local craftsmanship. This visual
-          exploration examines how milk is used, where cheese is produced,
-          how consumption and trade have developed, and which producers
-          have gained recognition.
-        </p>
-      </section>
+        <main>
+            <section class="narrative-section">
+                <h2 class="section-title">Introduction</h2>
 
-      <section class="section" id="milk">
-        <div class="section-heading">
-          <span class="section-number">01</span>
-          <div>
-            <h2>Understanding Australia's Milk</h2>
-            <p>
-              Explore how Australia's milk supply is utilised and how dairy
-              production is distributed across the states.
-            </p>
-          </div>
-        </div>
+                <div class="narrative narrative-grid">
+                    <p>
+                        Australia's cheese industry connects dairy farming,
+                        food production, domestic consumption, and global trade.
+                        Cheese is the largest user of Australia's milk supply,
+                        making it an important part of the country's dairy sector.
+                        Victoria leads milk production, supporting a major
+                        part of the industry's raw material supply.
+                    </p>
 
-        <div class="chart-grid">
-          <article class="chart-card">
-            <h3>How Is Australia's Milk Used?</h3>
-            <p class="chart-description">
-              Compare cheese production with other major uses of Australia's
-              milk supply.
-            </p>
-            <div id="milk_utilisation" class="chart"></div>
-          </article>
+                    <p>
+                        Beyond production, Australia's cheese market includes
+                        different varieties, nutritional profiles, and
+                        international trading partners. This visualisation
+                        explores how cheese is produced, consumed, imported,
+                        and exported. It also examines the producers and states
+                        recognised for their achievements in cheese competitions.
+                    </p>
+                </div>
+            </section>
 
-          <article class="chart-card">
-            <h3>Milk Production Across States</h3>
-            <p class="chart-description">
-              Compare dairy production between Australian states and identify
-              the regions contributing most to the national supply.
-            </p>
-            <div id="milk_by_state_map" class="chart"></div>
-          </article>
-        </div>
-      </section>
+            <section class="visualisation-section">
+                <h2 class="section-title">The Raw Material: Milk</h2>
 
-      <section class="section" id="production">
-        <div class="section-heading">
-          <span class="section-number">02</span>
-          <div>
-            <h2>Inside Cheese Production</h2>
-            <p>
-              Examine the types of cheese produced in Australia and compare
-              their characteristics.
-            </p>
-          </div>
-        </div>
+                <div class="pure-g">
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <div id="milk_utilisation" class="chart"></div>
+                    </div>
 
-        <div class="chart-grid">
-          <article class="chart-card">
-            <h3>Cheese Production by Type</h3>
-            <p class="chart-description">
-              See how production is distributed across different cheese
-              categories.
-            </p>
-            <div id="production_by_type" class="chart"></div>
-          </article>
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <div id="milk_by_state_map" class="chart"></div>
+                    </div>
+                </div>
+            </section>
 
-          <article class="chart-card">
-            <h3>Cheese Composition</h3>
-            <p class="chart-description">
-              Explore the relationship between cheese composition measures,
-              such as fat and moisture content.
-            </p>
-            <div id="composition_scatter" class="chart"></div>
-          </article>
-        </div>
-      </section>
+            <section class="visualisation-section">
+                <h2 class="section-title">Cheese Production: Types and Characteristics</h2>
 
-      <section class="section" id="consumption">
-        <div class="section-heading">
-          <span class="section-number">03</span>
-          <div>
-            <h2>Cheese Consumption</h2>
-            <p>
-              Look at changes in Australian cheese consumption over time to
-              understand how demand has developed.
-            </p>
-          </div>
-        </div>
+                <div class="pure-g">
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <div id="production_by_type" class="chart"></div>
+                    </div>
 
-        <div class="chart-grid chart-grid-single">
-          <article class="chart-card">
-            <h3>Consumption Over Time</h3>
-            <p class="chart-description">
-              Follow the trend in cheese consumption and observe how it
-              changes across the years shown.
-            </p>
-            <div id="consumption_trend" class="chart chart-wide"></div>
-          </article>
-        </div>
-      </section>
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <div id="composition_scatter" class="chart"></div>
+                    </div>
+                </div>
+            </section>
 
-      <section class="section" id="trade">
-        <div class="section-heading">
-          <span class="section-number">04</span>
-          <div>
-            <h2>Australia in the Global Market</h2>
-            <p>
-              Explore where Australia's cheese imports come from and how
-              Australian dairy exports contribute to international markets.
-            </p>
-          </div>
-        </div>
+            <section class="visualisation-section">
+                <h2 class="section-title">Domestic Consumption</h2>
 
-        <div class="chart-grid">
-          <article class="chart-card">
-            <h3>Cheese Imports by Origin</h3>
-            <p class="chart-description">
-              Compare the countries supplying cheese to the Australian market.
-            </p>
-            <div id="imports_by_origin" class="chart"></div>
-          </article>
+                <div class="pure-g">
+                    <div class="pure-u-1">
+                        <div id="consumption_trend" class="chart-full"></div>
+                    </div>
+                </div>
+            </section>
 
-          <article class="chart-card">
-            <h3>Dairy Export Value by Region</h3>
-            <p class="chart-description">
-              Compare export values across the regions represented in the data.
-            </p>
-            <div id="exports_value_by_region" class="chart"></div>
-          </article>
+            <section class="visualisation-section">
+                <h2 class="section-title">Global Trade</h2>
 
-          <article class="chart-card chart-card-wide">
-            <h3>Where Do Australian Dairy Exports Go?</h3>
-            <p class="chart-description">
-              Explore the international destinations connected to Australia's
-              dairy exports.
-            </p>
-            <div id="export_flow_map" class="chart chart-wide"></div>
-          </article>
-        </div>
-      </section>
+                <div class="pure-g">
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <div id="imports_by_origin" class="chart"></div>
+                    </div>
 
-      <section class="section" id="awards">
-        <div class="section-heading">
-          <span class="section-number">05</span>
-          <div>
-            <h2>Recognising Excellence</h2>
-            <p>
-              Discover leading cheese producers and explore how award
-              recognition is distributed across Australia.
-            </p>
-          </div>
-        </div>
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <div id="exports_value_by_region" class="chart"></div>
+                    </div>
+                </div>
 
-        <div class="chart-grid">
-          <article class="chart-card">
-            <h3>Top Cheese Producers</h3>
-            <p class="chart-description">
-              Compare the producers featured in the dataset.
-            </p>
-            <div id="top_producers" class="chart"></div>
-          </article>
+                <div class="pure-g">
+                    <div class="pure-u-1">
+                        <div id="export_flow_map" class="chart-full"></div>
+                    </div>
+                </div>
+            </section>
 
-          <article class="chart-card">
-            <h3>Cheese Awards Across States</h3>
-            <p class="chart-description">
-              Explore the geographical distribution of award recognition
-              across Australian states.
-            </p>
-            <div id="medals_by_state_map" class="chart"></div>
-          </article>
-        </div>
-      </section>
+            <section class="visualisation-section">
+                <h2 class="section-title">Award-Winning Craft</h2>
 
-      <section class="conclusion">
-        <p class="section-label">KEY TAKEAWAYS</p>
-        <h2>One industry, many connections.</h2>
-        <p>
-          Australia's cheese industry can be understood through the
-          relationship between dairy resources, production, consumption,
-          international trade and producer recognition. Together, these
-          perspectives provide a broader picture of how the industry operates
-          and where its different strengths lie.
-        </p>
-      </section>
-    </main>
+                <div class="pure-g">
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <div id="top_producers" class="chart"></div>
+                    </div>
 
-    <footer class="footer">
-      <div class="footer-top">
-        <div>
-          <h2>Sources and Acknowledgements</h2>
-          <p>
-            Data and background information are drawn from the following
-            sources. Refer to the individual datasets and chart annotations
-            for the specific sources used.
-          </p>
-        </div>
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <div id="medals_by_state_map" class="chart"></div>
+                    </div>
+                </div>
+            </section>
 
-        <div class="footer-links">
-          <a href="https://www.dairyaustralia.com.au/" target="_blank" rel="noopener noreferrer">
-            Dairy Australia
-          </a>
-          <a href="https://www.rasnsw.com.au/" target="_blank" rel="noopener noreferrer">
-            Royal Agricultural Society of NSW
-          </a>
-        </div>
-      </div>
+            <section class="narrative-section">
+                <h2 class="section-title">Conclusion</h2>
 
-      <div class="footer-bottom">
-        <p>Data visualisation project · Monash University Malaysia</p>
-        <p>Created by Arthur Bentley Tuerah</p>
-      </div>
-    </footer>
-  </div>
+                <div class="narrative narrative-grid">
+                    <p>
+                        Australia's cheese industry combines large-scale
+                        production with diverse products. Cheddar leads cheese
+                        production, while cottage cheese stands out for its
+                        lower fat and SNF content. Consumption remains high
+                        throughout the year, showing cheese's continued place
+                        in Australian diets.
+                    </p>
 
-  <script src="vega_lite_vis.js"></script>
+                    <p>
+                        International trade is strongly connected to Asia,
+                        with Japan standing out as Australia's largest cheese
+                        export market. New Zealand leads cheese imports.
+                        In competitions, Real Dairy Australia is the leading
+                        producer by medals, while NSW and Victoria dominate
+                        state awards.
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-sources">
+                <h2>Data Sources</h2>
+                <p class="footer-description">
+                    Data and background information used in this visualisation
+                    are drawn from the following sources.
+                </p>
+
+                <p>
+                    <a
+                        href="https://assets.dairyaustralia.com.au/api/public/content/In-Focus-2025?v=42fe4d04"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Dairy Australia
+                    </a>
+                </p>
+
+                <p>
+                    <a
+                        href="https://www.rasnsw.com.au/globalassets/document-library/rasnsw/competitions/cheese-dairy/competitions_cheese-and-dairy_2025-show-catalogue.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Royal Agricultural Society of NSW
+                    </a>
+                </p>
+            </div>
+
+            <div class="footer-credit">
+                <p>Data visualisation by Arthur Bentley Tuerah (34899227)</p>
+                <p>Monash University Malaysia</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="vega_lite_vis.js"></script>
 </body>
 </html>
