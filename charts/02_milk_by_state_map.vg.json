@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "SA Lead on Milk Yield per Cow",
-    "subtitle": "Milk production per cow by state (litres), 2024-25",
+    "text": "South Australia Leads in Milk Yield per Cow",
+    "subtitle": "Estimated milk production per cow by state (litres), 2024-25",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#666",
