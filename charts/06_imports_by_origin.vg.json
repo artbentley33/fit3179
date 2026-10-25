@@ -9,7 +9,7 @@
     "subtitleColor": "#666",
     "offset": 10
   },
-  "width": 500,
+  "width": "container",
   "height": 460,
   "data": [
     {
