@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Cheese Consumption Remains High in Australia",
-    "subtitle": "Per capita consumption of solid dairy products (kg), 2020-21 to 2024-25",
+    "text": "Cheese Leads Consumption of Solid Dairy Products",
+    "subtitle": "Per capita consumption of solid dairy products (kg), 2020-21 and 2024-25",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#666",
@@ -48,7 +48,7 @@
           "type": "nominal",
           "scale": {
             "domain": ["Cheese", "Butter", "Yoghurt"],
-            "range": ["#d97706", "#7b241c", "#009e73"]
+            "range": ["#E0A800", "#CC79A7", "#0072B2"]
           },
           "legend": {
             "title": "Product",
