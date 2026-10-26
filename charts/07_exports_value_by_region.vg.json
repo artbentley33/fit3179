@@ -10,7 +10,7 @@
     "offset": 10
   },
   "width": "container",
-  "height": 400,
+  "height": 450,
   "data": {
     "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_exports_value_by_region.csv",
     "format": {
