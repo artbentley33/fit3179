@@ -10,7 +10,7 @@
     "offset": 10
   },
   "width": "container",
-  "height": 300,
+  "height": 320,
   "data": {
     "url": "https://raw.githubusercontent.com/artbentley33/fit3179/main/data/cheese_composition.csv"
   },
